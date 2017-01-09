@@ -19,6 +19,7 @@
     <result column="like_cnt" property="likeCnt" jdbcType="INTEGER" />
     <result column="earn_total_money" property="earnTotalMoney" jdbcType="REAL" />
     <result column="earn_reword_money" property="earnRewordMoney" jdbcType="REAL" />
+    <result column="used_reward_money" property="usedRewardMoney" jdbcType="REAL" />
     <result column="resent_send_basic_addr" property="resentSendBasicAddr" jdbcType="VARCHAR" />
     <result column="resent_send_detail_addr" property="resentSendDetailAddr" jdbcType="VARCHAR" />
     <result column="resent_send_zipcode" property="resentSendZipcode" jdbcType="VARCHAR" />
@@ -92,7 +93,7 @@
   <sql id="Base_Column_List" >
     user_id, password, email, name, provider_id, introduce, basic_addr, detail_addr, 
     zipcode, city, location, language, upload_cnt, post_cnt, like_cnt, earn_total_money, 
-    earn_reword_money, resent_send_basic_addr, resent_send_detail_addr, resent_send_zipcode, 
+    earn_reword_money, used_reward_money, resent_send_basic_addr, resent_send_detail_addr, resent_send_zipcode, 
     resent_send_city, resent_send_location, resent_send_name, point, user_status, sns_type, 
     created_date, service_cnt
   </sql>
@@ -133,7 +134,7 @@
       basic_addr, detail_addr, zipcode, 
       city, location, language, 
       upload_cnt, post_cnt, like_cnt, 
-      earn_total_money, earn_reword_money, resent_send_basic_addr, 
+      earn_total_money, earn_reword_money, used_reward_money, resent_send_basic_addr, 
       resent_send_detail_addr, resent_send_zipcode, 
       resent_send_city, resent_send_location, resent_send_name, 
       point, user_status, sns_type, 
@@ -143,7 +144,7 @@
       #{basicAddr,jdbcType=VARCHAR}, #{detailAddr,jdbcType=VARCHAR}, #{zipcode,jdbcType=VARCHAR}, 
       #{city,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, #{language,jdbcType=VARCHAR}, 
       #{uploadCnt,jdbcType=INTEGER}, #{postCnt,jdbcType=INTEGER}, #{likeCnt,jdbcType=INTEGER}, 
-      #{earnTotalMoney,jdbcType=REAL}, #{earnRewordMoney,jdbcType=REAL}, #{resentSendBasicAddr,jdbcType=VARCHAR}, 
+      #{earnTotalMoney,jdbcType=REAL}, #{earnRewordMoney,jdbcType=REAL}, #{usedRewardMoney,jdbcType=REAL}, #{resentSendBasicAddr,jdbcType=VARCHAR}, 
       #{resentSendDetailAddr,jdbcType=VARCHAR}, #{resentSendZipcode,jdbcType=VARCHAR}, 
       #{resentSendCity,jdbcType=VARCHAR}, #{resentSendLocation,jdbcType=VARCHAR}, #{resentSendName,jdbcType=VARCHAR}, 
       #{point,jdbcType=INTEGER}, #{userStatus,jdbcType=CHAR}, #{snsType,jdbcType=CHAR}, 
@@ -202,6 +203,9 @@
       </if>
       <if test="earnRewordMoney != null" >
         earn_reword_money,
+      </if>
+      <if test="usedRewardMoney != null" >
+        used_reward_money,
       </if>
       <if test="resentSendBasicAddr != null" >
         resent_send_basic_addr,
@@ -288,6 +292,9 @@
       </if>
       <if test="earnRewordMoney != null" >
         #{earnRewordMoney,jdbcType=REAL},
+      </if>
+      <if test="usedRewardMoney != null" >
+        #{usedRewardMoney,jdbcType=REAL},
       </if>
       <if test="resentSendBasicAddr != null" >
         #{resentSendBasicAddr,jdbcType=VARCHAR},
@@ -384,6 +391,9 @@
       <if test="record.earnRewordMoney != null" >
         earn_reword_money = #{record.earnRewordMoney,jdbcType=REAL},
       </if>
+      <if test="record.usedRewardMoney != null" >
+        used_reward_money = #{record.usedRewardMoney,jdbcType=REAL},
+      </if>
       <if test="record.resentSendBasicAddr != null" >
         resent_send_basic_addr = #{record.resentSendBasicAddr,jdbcType=VARCHAR},
       </if>
@@ -441,6 +451,7 @@
       like_cnt = #{record.likeCnt,jdbcType=INTEGER},
       earn_total_money = #{record.earnTotalMoney,jdbcType=REAL},
       earn_reword_money = #{record.earnRewordMoney,jdbcType=REAL},
+      used_reward_money = #{record.usedRewardMoney,jdbcType=REAL},
       resent_send_basic_addr = #{record.resentSendBasicAddr,jdbcType=VARCHAR},
       resent_send_detail_addr = #{record.resentSendDetailAddr,jdbcType=VARCHAR},
       resent_send_zipcode = #{record.resentSendZipcode,jdbcType=VARCHAR},
@@ -507,6 +518,9 @@
       <if test="earnRewordMoney != null" >
         earn_reword_money = #{earnRewordMoney,jdbcType=REAL},
       </if>
+      <if test="usedRewardMoney != null" >
+        used_reward_money = #{usedRewardMoney,jdbcType=REAL},
+      </if>
       <if test="resentSendBasicAddr != null" >
         resent_send_basic_addr = #{resentSendBasicAddr,jdbcType=VARCHAR},
       </if>
@@ -561,6 +575,7 @@
       like_cnt = #{likeCnt,jdbcType=INTEGER},
       earn_total_money = #{earnTotalMoney,jdbcType=REAL},
       earn_reword_money = #{earnRewordMoney,jdbcType=REAL},
+      used_reward_money = #{usedRewardMoney,jdbcType=REAL},
       resent_send_basic_addr = #{resentSendBasicAddr,jdbcType=VARCHAR},
       resent_send_detail_addr = #{resentSendDetailAddr,jdbcType=VARCHAR},
       resent_send_zipcode = #{resentSendZipcode,jdbcType=VARCHAR},

@@ -82,7 +82,6 @@ public class PurchaseRestController {
 	*/
 	@RequestMapping(value="/api/purchase", method={RequestMethod.POST})
 	public Map<String, Object> addPurchase(@RequestBody PurchaseSearchVO purchase, LoginedUserVO loginedUserVO) throws Exception {
-		logger.debug(purchase.toString());
 		// 로그인 사용자의 구매자 아이디 입력
 		purchase.setUserId(loginedUserVO.getUserId());
 		// 구매관련 정보 등록

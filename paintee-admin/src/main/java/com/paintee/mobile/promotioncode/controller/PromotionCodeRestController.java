@@ -62,12 +62,12 @@ public class PromotionCodeRestController {
      @throws Exception
      */
     @RequestMapping(value="/api/promotioncode/info", method={RequestMethod.GET})
-    public Map<String, Object> info(LoginedUserVO loginedUserVO) throws Exception {
-        // 구매관련 정보 등록
+    public Map<String, Object> info(PromotionCodeVO promotioncode, LoginedUserVO loginedUserVO) throws Exception {
+        // 프로모션 관련 정보 GET
         User user = new User();
         user.setUserId(loginedUserVO.getUserId());
         
-        Map<String, Object> result = promotionService.promotionInfo(user);
+        Map<String, Object> result = promotioncodeService.promotioncodeInfo(promotioncode, user);
         return result;
     }
     
@@ -81,13 +81,10 @@ public class PromotionCodeRestController {
      @throws Exception
      */
     @RequestMapping(value="/api/promotioncode/check", method={RequestMethod.POST})
-    public Map<String, Object> info(LoginedUserVO loginedUserVO) throws Exception {
-        // 구매관련 정보 등록
-        User user = new User();
-        user.setUserId(loginedUserVO.getUserId());
-        
-        Map<String, Object> result = promotionService.promotionInfo(user);
-        return result;
+    public Map<String, Object> checkPromotionCode(@RequestBody PromotionCodeVO promotioncode, LoginedUserVO loginedUserVO) throws Exception {
+
+//        promotioncode.setUsedUser(loginedUserVO.getUserId());
+        return promotioncodeService.checkPromotionCode(promotioncode, loginedUserVO);
     }
 	
 	/**
@@ -96,19 +93,20 @@ public class PromotionCodeRestController {
 	 @remark
 	 - 함수의 상세 설명 : 프로모션코드를 난수생성하여 추가 (갯수 지정하여 갯수만큼 추가)
 	 @param loginedUserVO
-	 @param promotioncode
+	 @param promotioncodeVO
 	 @return
 	 @throws Exception 
 	*/
 	@RequestMapping(value="/api/promotioncode", method={RequestMethod.POST})
-	public Map<String, Object> addPromotionCode(@RequestBody PromotionCode promotioncode) throws Exception {
+	public Map<String, Object> addPromotionCode(@RequestBody PromotionCodeVO promotioncode) throws Exception {
 		
-		// 리워드 정보 등록
+		//프로모션 코드 생성 & 정보 등록
 //		promotioncode.setUsedUser(loginedUserVO.getUserId());
-		promotioncodeService.addPromotionCode(promotioncode);
+		int count = promotioncodeService.addPromotionCode(promotioncode);
 		
 		Map<String, Object> result = new HashMap<>();
-		// 에러정보
+		
+		result.put("count",count);
 		result.put("errorNo", 0);
 		result.put("errorMsg", "");
 		return result;

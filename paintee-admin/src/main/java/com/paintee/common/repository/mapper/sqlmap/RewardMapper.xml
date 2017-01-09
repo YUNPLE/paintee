@@ -12,7 +12,10 @@
     <result column="earm_requested_commission" property="earmRequestedCommission" jdbcType="INTEGER" />
     <result column="reward_status" property="rewardStatus" jdbcType="CHAR" />
     <result column="created_date" property="createdDate" jdbcType="TIMESTAMP" />
-  </resultMap>
+    <result column="reward_type" property="rewardType" jdbcType="CHAR" />
+    <result column="purchase_seq" property="purchaseSeq" jdbcType="INTEGER" />
+    <result column="purchase_paint" property="purchasePaint" jdbcType="VARCHAR" />
+    </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -73,7 +76,7 @@
   </sql>
   <sql id="Base_Column_List" >
     seq, user_id, bank, direct_input_bank, account_no, account_name, earm_requested_money, 
-    earm_requested_commission, reward_status, created_date
+    earm_requested_commission, reward_status, created_date, reward_type, purchase_seq, purchase_paint
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.paintee.common.repository.entity.RewardExample" >
     select
@@ -112,11 +115,11 @@
     </selectKey>
     insert into TB_REWARD (user_id, bank, direct_input_bank, 
       account_no, account_name, earm_requested_money, 
-      earm_requested_commission, reward_status, created_date
+      earm_requested_commission, reward_status, created_date, reward_type, purchase_seq, purchase_paint
       )
     values (#{userId,jdbcType=VARCHAR}, #{bank,jdbcType=VARCHAR}, #{directInputBank,jdbcType=VARCHAR}, 
       #{accountNo,jdbcType=VARCHAR}, #{accountName,jdbcType=VARCHAR}, #{earmRequestedMoney,jdbcType=INTEGER}, 
-      #{earmRequestedCommission,jdbcType=INTEGER}, #{rewardStatus,jdbcType=CHAR}, #{createdDate,jdbcType=TIMESTAMP}
+      #{earmRequestedCommission,jdbcType=INTEGER}, #{rewardStatus,jdbcType=CHAR}, #{createdDate,jdbcType=TIMESTAMP}}, #{rewardType,jdbcType=CHAR}}, #{purchaseSeq,jdbcType=INTEGER}}, #{purchasePaint,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.paintee.common.repository.entity.Reward" >
@@ -152,6 +155,15 @@
       <if test="createdDate != null" >
         created_date,
       </if>
+      <if test="rewardType != null" >
+        reward_type,
+      </if>
+      <if test="purchaseSeq != null" >
+        purchase_seq,
+      </if>
+      <if test="purchasePaint != null" >
+        purchase_paint,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
@@ -180,6 +192,15 @@
       </if>
       <if test="createdDate != null" >
         #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rewardType != null" >
+        #{rewardType,jdbcType=CHAR},
+      </if>
+      <if test="purchaseSeq != null" >
+        #{purchaseSeq,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePaint != null" >
+        #{purchasePaint,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -222,6 +243,16 @@
       <if test="record.createdDate != null" >
         created_date = #{record.createdDate,jdbcType=TIMESTAMP},
       </if>
+      
+      <if test="record.rewardType != null" >
+        reward_type = #{record.rewardType,jdbcType=CHAR},
+      </if>
+      <if test="record.purchaseSeq != null" >
+        purchase_seq = #{record.purchaseSeq,jdbcType=INTEGER},
+      </if>
+      <if test="record.purchasePaint != null" >
+        purchase_paint = #{record.purchasePaint,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -238,7 +269,10 @@
       earm_requested_money = #{record.earmRequestedMoney,jdbcType=INTEGER},
       earm_requested_commission = #{record.earmRequestedCommission,jdbcType=INTEGER},
       reward_status = #{record.rewardStatus,jdbcType=CHAR},
-      created_date = #{record.createdDate,jdbcType=TIMESTAMP}
+      created_date = #{record.createdDate,jdbcType=TIMESTAMP},
+      reward_type = #{record.rewardType,jdbcType=CHAR},
+      purchase_seq = #{record.purchaseSeq,jdbcType=INTEGER},
+      purchase_paint = #{record.purchasePaint,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -273,6 +307,15 @@
       <if test="createdDate != null" >
         created_date = #{createdDate,jdbcType=TIMESTAMP},
       </if>
+      <if test="rewardType != null" >
+        reward_type = #{rewardType,jdbcType=CHAR},
+      </if>
+      <if test="purchaseSeq != null" >
+        purchase_seq = #{purchaseSeq,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePaint != null" >
+        purchase_paint = #{purchasePaint,jdbcType=VARCHAR},
+      </if>
     </set>
     where seq = #{seq,jdbcType=INTEGER}
   </update>
@@ -286,7 +329,10 @@
       earm_requested_money = #{earmRequestedMoney,jdbcType=INTEGER},
       earm_requested_commission = #{earmRequestedCommission,jdbcType=INTEGER},
       reward_status = #{rewardStatus,jdbcType=CHAR},
-      created_date = #{createdDate,jdbcType=TIMESTAMP}
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      reward_type = #{rewardType,jdbcType=CHAR},
+      purchase_seq = #{purchaseSeq,jdbcType=INTEGER},
+      purchase_paint = #{purchasePaint,jdbcType=VARCHAR}
     where seq = #{seq,jdbcType=INTEGER}
   </update>
 </mapper>

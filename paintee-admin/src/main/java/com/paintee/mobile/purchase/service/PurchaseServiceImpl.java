@@ -29,14 +29,15 @@ import com.paintee.common.repository.entity.FileInfoExample;
 import com.paintee.common.repository.entity.Painting;
 import com.paintee.common.repository.entity.PaintingExample;
 import com.paintee.common.repository.entity.PurchaseExample;
+import com.paintee.common.repository.entity.Reward;
 import com.paintee.common.repository.entity.TuesdayPainting;
-import com.paintee.common.repository.entity.TuesdayPaintingExample;
 import com.paintee.common.repository.entity.User;
 import com.paintee.common.repository.entity.vo.PaintingVO;
 import com.paintee.common.repository.entity.vo.PurchaseSearchVO;
 import com.paintee.common.repository.helper.FileInfoHelper;
 import com.paintee.common.repository.helper.PaintingHelper;
 import com.paintee.common.repository.helper.PurchaseHelper;
+import com.paintee.common.repository.helper.RewardHelper;
 import com.paintee.common.repository.helper.TuesdayPaintingHelper;
 import com.paintee.common.repository.helper.UserHelper;
 import com.paintee.mobile.support.obejct.LoginedUserVO;
@@ -75,6 +76,8 @@ public class PurchaseServiceImpl implements PurchaseService {
 	@Autowired
 	private TuesdayPaintingHelper tuesdayPaintingHelper;
 
+	@Autowired
+	private RewardHelper rewardHelper;
 	/**
 	 @fn 
 	 @brief (Override method) 함수 간략한 설명 : 그림의 구매 처리를 진행
@@ -91,11 +94,12 @@ public class PurchaseServiceImpl implements PurchaseService {
 	*/
 	@Override
 	public Map<String, Object> addPurchase(PurchaseSearchVO purchase) throws Exception {
-		logger.debug("구매추가 : {}", purchase);
+		logger.debug("구매추가 : {}",purchase);
 		Map<String, Object> resultMap = new HashMap<>();
 
 		String userId = purchase.getUserId();
 		String paintingId = purchase.getPaintingId();
+		Float nowused = purchase.getUsedRewardMoney();
 
 		if("TUESDAY".equals(purchase.getPurchaseType())) {
 			TuesdayPainting tuesdayPainting = tuesdayPaintingHelper.selectFreeTuesdayPaintingByPaintingId(paintingId);
@@ -132,6 +136,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 
 		// 구매 테이블 데이터 추가
 		purchaseHelper.insertSelective(purchase);
+		
 
 		// 그림 테이블 정보 업데이트 - posted_num 무조건 1 증가, posted_people_cnt (구매 테이블에 해당 사용자가 산적이 있는지 확인 후 증가 시킴)
 		Painting painting = new Painting();
@@ -162,13 +167,36 @@ public class PurchaseServiceImpl implements PurchaseService {
 		
 		user.setPostCnt(1);
 		
+
+		Integer purchaseProvider = purchase.getPurchaseProvider();
+		
 		// 서비스 구매 포인트 차감(화요의 그림 무료 구매시 서비스 카운트 차감하지 않음.) 
-		if (!purchase.getPurchaseType().equals("TUESDAY") && purchase.getServiceCnt() > 0) {
+		if (!purchase.getPurchaseType().equals("TUESDAY") && purchase.getServiceCnt() > 0 && purchaseProvider == 0) {
 			user.setServiceCnt(-1);
 		}
-		
+		// 리워드 차감 (usedrewardmoney + 2);
+		if(purchaseProvider == 4){
+			if(user != null && nowused != null){
+				user.setUsedRewardMoney(2.f);
+			}
+			
+			Reward reward = new Reward();
+			reward.setCreatedDate(new Date());
+			reward.setUserId(userId);
+			reward.setEarmRequestedMoney(2);
+			reward.setEarmRequestedCommission(0);
+			reward.setRewardType("P");
+			reward.setRewardStatus("C");
+			reward.setPurchsePaint(paintingId);
+			reward.setPurchaseSeq(purchase.getSeq());
+			
+			rewardHelper.insertSelective(reward);
+			
+		}
+		if(purchaseProvider == 5){
+			System.out.println("buying with PROMOTIONCODE");
+		}
 		userHelper.updateUserInfo(user);
-		
 		// 구매 후 공유를 할 수 있게 하기 위해 그림 정보를 가져온다.
 		PaintingVO pInfo = paintingHelper.selectPaintingInfo(paintingId, userId);
 		
@@ -180,11 +208,15 @@ public class PurchaseServiceImpl implements PurchaseService {
 		List<FileInfo> fileInfoList = fileInfoHelper.selectByExample(fileInfoExample);
 
 		if(fileInfoList != null && fileInfoList.size() > 0) {
+
+			
 			FileInfo fileInfo = fileInfoList.get(0);
 			resultMap.put("fileId", fileInfo.getId());
 		}
+		else{
+		}
 
-		resultMap.put("errorNo", "0");
+  		resultMap.put("errorNo", "0");
 		resultMap.put("errorMsg", "");
 		return resultMap;
 	}

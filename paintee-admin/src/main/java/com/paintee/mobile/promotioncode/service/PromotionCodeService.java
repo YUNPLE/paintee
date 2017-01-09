@@ -20,7 +20,9 @@ import java.util.Map;
 import com.paintee.common.repository.entity.PromotionCode;
 import com.paintee.common.repository.entity.User;
 import com.paintee.common.repository.entity.vo.PromotionCodeVO;
-//import com.paintee.common.repository.entity.vo.RewardSearchVO;
+import com.paintee.mobile.support.obejct.LoginedUserVO;
+import com.paintee.common.repository.entity.vo.PromotionCodeSearchVO;
+
 
 /**
 @class PurchaseService
@@ -48,7 +50,7 @@ public interface PromotionCodeService {
 	 @param user
 	 @return 
 	*/
-	public Map<String, Object> promotioncodeInfo(User user);
+	public Map<String, Object> promotioncodeInfo(PromotionCode promotioncode, User user);
 
 	/**
 	 @fn addReward
@@ -57,24 +59,19 @@ public interface PromotionCodeService {
 	 - 함수의 상세 설명 : 로그인 사용자가 신청한 리워드 정보를 등록하고 사용자 테이블의 리워드 관련 정보를 업데이트 한다.
 	 @param reward 
 	*/
-    public void addPromotionCode(PromotionCode promotioncode);
+    public int addPromotionCode(PromotionCodeVO promotioncode);
 
+    
+    public Map<String, Object> checkPromotionCode(PromotionCodeVO promotioncode, LoginedUserVO loginedUserVO);
 	/**
 	 @fn rewardHistory
-	 @brief 함수 간략한 설명 : 로그인 사용자의 리워드 히스토리 정보를 조회
+	 @brief 함수 간략한 설명 : 로그인 사용자와입력한 프로모션코드대조하여 유효한 코드인지 체크.
 	 @remark
-	 - 함수의 상세 설명 : 로그인 사용자의 리워드 히스토리 정보를 조회
-	 @param user
+	 - 함수의 상세 설명 : 로그인 사용자와입력한 프로모션코드대조하여 유효한 코드인지 체크.
+	 				유효하면 사용처리 까지 완료.
+	 @param promotioncode, user
 	 @return 
 	*/
-	public List<PromotionCodeResultVO> promotioncodeHistory(User user);
+//	public List<PromotionCodeSearchVO> promotioncodeHistory(User user);
 
-	/**
-	 @fn cancelReward
-	 @brief 함수 간략한 설명 : 사용자 요청 리워드 취소
-	 @remark
-	 - 함수의 상세 설명 : 사용자가 요청한 리워드를 취소한다.(리워드 삭제, 사용자 리워드 관련 금액 변경)
-	 @param search 
-	*/
-	public void cancelPromotionCode(PromotionCodeSearchVO search);
 }

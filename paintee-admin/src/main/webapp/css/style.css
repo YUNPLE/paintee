@@ -58,3 +58,12 @@ tbody tr { display:table; width:100%; border-bottom:1px solid #ddd; }
 .table-purchase thead th:nth-child(4), .table-purchase tbody td:nth-child(4) { width:180px; }
 .table-purchase thead th:nth-child(5), .table-purchase tbody td:nth-child(5) { width:180px; }
 .table-purchase thead th:nth-child(6), .table-purchase tbody td:nth-child(6) { width:180px; }
+
+/* promotioncode */
+.table-promotioncode thead th:first-child, .table-promotioncode tbody td:first-child { width:30px; }
+.table-promotioncode thead th:nth-child(2), .table-promotioncode tbody td:nth-child(2) { width:100px; }
+.table-promotioncode thead th:nth-child(3), .table-promotioncode tbody td:nth-child(2) { width:220px; }
+.table-promotioncode thead th:nth-child(4), .table-promotioncode tbody td:nth-child(3) { width:220px; }
+.table-promotioncode thead th:nth-child(5), .table-promotioncode tbody td:nth-child(4) { width:220px; }
+.table-promotioncode thead th:nth-child(6), .table-promotioncode tbody td:nth-child(5) { width:180px; }
+.table-promotioncode thead th:nth-child(7), .table-promotioncode tbody td:nth-child(6) { width:100px; }

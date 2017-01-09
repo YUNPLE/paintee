@@ -147,7 +147,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 			user = new User();
 			// 구매한 그림의 작가에게 수익금액 쌓기
 			user.setUserId(pInfo.getArtistId());
-			user.setEarnTotalMoney(new Float(0.5));
+			user.setEarnTotalMoney(new Float(0.3));
 			
 			userHelper.updateUserInfo(user);
 			break;

@@ -764,6 +764,206 @@ public class RewardExample {
             addCriterion("created_date not between", value1, value2, "createdDate");
             return (Criteria) this;
         }
+        
+        public Criteria andRewardTypeIsNull() {
+            addCriterion("reward_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRewardTypeIsNotNull() {
+            addCriterion("reward_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRewardTypeEqualTo(String value) {
+            addCriterion("reward_type =", value, "rewardType");
+            return (Criteria) this;
+        }
+
+        public Criteria andRewardTypeNotEqualTo(String value) {
+            addCriterion("reward_type <>", value, "rewardType");
+            return (Criteria) this;
+        }
+
+        public Criteria andRewardTypeGreaterThan(String value) {
+            addCriterion("reward_type >", value, "rewardType");
+            return (Criteria) this;
+        }
+
+        public Criteria andRewardTypeGreaterThanOrEqualTo(String value) {
+            addCriterion("reward_type >=", value, "rewardType");
+            return (Criteria) this;
+        }
+
+        public Criteria andRewardTypeLessThan(String value) {
+            addCriterion("reward_type <", value, "rewardType");
+            return (Criteria) this;
+        }
+
+        public Criteria andRewardTypeLessThanOrEqualTo(String value) {
+            addCriterion("reward_type <=", value, "rewardType");
+            return (Criteria) this;
+        }
+
+        public Criteria andRewardTypeLike(String value) {
+            addCriterion("reward_type like", value, "rewardType");
+            return (Criteria) this;
+        }
+
+        public Criteria andRewardTypeNotLike(String value) {
+            addCriterion("reward_type not like", value, "rewardType");
+            return (Criteria) this;
+        }
+
+        public Criteria andRewardTypeIn(List<String> values) {
+            addCriterion("reward_type in", values, "rewardType");
+            return (Criteria) this;
+        }
+
+        public Criteria andRewardTypeNotIn(List<String> values) {
+            addCriterion("reward_type not in", values, "rewardType");
+            return (Criteria) this;
+        }
+
+        public Criteria andRewardTypeBetween(String value1, String value2) {
+            addCriterion("reward_type between", value1, value2, "rewardType");
+            return (Criteria) this;
+        }
+
+        public Criteria andRewardTypeNotBetween(String value1, String value2) {
+            addCriterion("reward_type not between", value1, value2, "rewardType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseSeqIsNull() {
+            addCriterion("purchase_seq is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseSeqIsNotNull() {
+            addCriterion("purchase_seq is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseSeqEqualTo(Integer value) {
+            addCriterion("purchase_seq =", value, "purchaseSeq");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseSeqNotEqualTo(Integer value) {
+            addCriterion("purchase_seq <>", value, "purchaseSeq");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseSeqGreaterThan(Integer value) {
+            addCriterion("purchase_seq >", value, "purchaseSeq");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseSeqGreaterThanOrEqualTo(Integer value) {
+            addCriterion("purchase_seq >=", value, "purchaseSeq");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseSeqLessThan(Integer value) {
+            addCriterion("purchase_seq <", value, "purchaseSeq");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseSeqLessThanOrEqualTo(Integer value) {
+            addCriterion("purchase_seq <=", value, "purchaseSeq");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseSeqIn(List<Integer> values) {
+            addCriterion("purchase_seq in", values, "purchaseSeq");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseSeqNotIn(List<Integer> values) {
+            addCriterion("purchase_seq not in", values, "purchaseSeq");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseSeqBetween(Integer value1, Integer value2) {
+            addCriterion("purchase_seq between", value1, value2, "purchaseSeq");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseSeqNotBetween(Integer value1, Integer value2) {
+            addCriterion("purchase_seq not between", value1, value2, "purchaseSeq");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchasePaintIsNull() {
+            addCriterion("purhcase_paint is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchasePaintIsNotNull() {
+            addCriterion("purhcase_paint is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchasePaintEqualTo(String value) {
+            addCriterion("purhcase_paint =", value, "purchasePaint");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchasePaintNotEqualTo(String value) {
+            addCriterion("purhcase_paint <>", value, "purchasePaint");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchasePaintGreaterThan(String value) {
+            addCriterion("purhcase_paint >", value, "purchasePaint");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchasePaintGreaterThanOrEqualTo(String value) {
+            addCriterion("purhcase_paint >=", value, "purchasePaint");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchasePaintLessThan(String value) {
+            addCriterion("purhcase_paint <", value, "purchasePaint");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchasePaintLessThanOrEqualTo(String value) {
+            addCriterion("purhcase_paint <=", value, "purchasePaint");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchasePaintLike(String value) {
+            addCriterion("purhcase_paint like", value, "purchasePaint");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchasePaintNotLike(String value) {
+            addCriterion("purhcase_paint not like", value, "purchasePaint");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchasePaintIn(List<String> values) {
+            addCriterion("purhcase_paint in", values, "purchasePaint");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchasePaintNotIn(List<String> values) {
+            addCriterion("purhcase_paint not in", values, "purchasePaint");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchasePaintBetween(String value1, String value2) {
+            addCriterion("purhcase_paint between", value1, value2, "purchasePaint");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchasePaintNotBetween(String value1, String value2) {
+            addCriterion("purhcase_paint not between", value1, value2, "purchasePaint");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

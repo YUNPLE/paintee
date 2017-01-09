@@ -18,7 +18,11 @@
 		    </if>	   
 		    <if test="earnRewordMoney != null">
 			   	  ,earn_reword_money = earn_reword_money + #{earnRewordMoney}  
-		    </if>	   
+		    </if>	 
+		    <if test="usedRewardMoney != null">
+			   	  ,used_reward_money = used_reward_money + #{usedRewardMoney}  
+		    </if>	 
+		      
 		    <if test="uploadCnt != null">
 			   	  ,upload_cnt = upload_cnt + #{uploadCnt}
 		    </if>	   

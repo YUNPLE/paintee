@@ -1,4 +1,4 @@
-/**
+/*
 @file AdminSessionInterceptor.java
 @section 파일생성정보
 |    항  목       |      내  용       |

@@ -15,6 +15,8 @@ public interface PromotionCodeMapper {
     int insert(PromotionCode record);
 
     int insertSelective(PromotionCode record);
+    
+    String checkStatus(PromotionCodeExample promotioncode, String userid);
 
     List<PromotionCode> selectByExample(PromotionCodeExample example);
 

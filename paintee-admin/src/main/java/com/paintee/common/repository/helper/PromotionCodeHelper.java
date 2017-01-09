@@ -16,10 +16,11 @@ package com.paintee.common.repository.helper;
 
 import java.util.List;
 
-import com.paintee.common.repository.entity.vo.PostedSearchVO;
+import com.paintee.common.repository.entity.PromotionCode;
+import com.paintee.common.repository.entity.User;
 import com.paintee.common.repository.entity.vo.PromotionCodeSearchVO;
 import com.paintee.common.repository.entity.vo.PromotionCodeVO;
-import com.paintee.common.repository.entity.vo.PromotionCodeVO;
+import com.paintee.common.repository.entity.vo.PurchaseSearchVO;
 import com.paintee.common.repository.mapper.PromotionCodeMapper;
 
 /**
@@ -31,41 +32,17 @@ com.paintee.common.repository.helper \n
     | :-----------: | -------------  |
     |   Company     |       Paintee  |
     | Author | Administrator |
-    | Date | 2016. 3. 3. 오후 11:09:41 |
+    | Date | 2016. 12. 3. 오후 11:09:41 |
     | Class Version | v1.0 |
-    | 작업자 | Administrator |
+    | 작업자 | Yeuntaek |
  @section 상세설명
  - 프로모션 코드 관련 helper
 */
-public interface PromotionCodeVO extends PromotionCodeMapper {
-	/**
-	 @fn selectPostedList
-	 @brief 함수 간략한 설명 : 구매한 사용자의 sentence 정보 목록 조회
-	 @remark
-	 - 함수의 상세 설명 : 구매한 사용자의 sentence 정보 목록을 조회 한다. 페이징 처리함.
-	 @param postedSearchVO
-	 @return 
-	*/
-//	public List<PromotionCodeVO> selectPostedList(PostedSearchVO postedSearchVO);
-//	
-//	/**
-//	 @fn selectPromotionCodeList
-//	 @brief 함수 간략한 설명 : 관리자 메뉴의 구매정보를 조회한다.
-//	 @remark
-//	 - 함수의 상세 설명 : 
-//	 @param postedSearchVO
-//	 @return 
-//	*/
-//	public List<PromotionCodeVO> selectPromotionCodeList(PromotionCodeSearchVO promotioncodeSearchVO);
-//
-//	/**
-//	 @fn selectPromotionCodeListCount
-//	 @brief 함수 간략한 설명 : 관리자 메뉴의 구매정보 전체 카운트 
-//	 @remark
-//	 - 함수의 상세 설명 : 
-//	 @param postedSearchVO
-//	 @return 
-//	*/
-//	public Integer selectPromotionCodeListCount(PromotionCodeSearchVO promotioncodeSearchVO);
+public interface PromotionCodeHelper extends PromotionCodeMapper {
+
+	public void updatePromotionCodeInfo(PromotionCode code);
 	
+	public List<PromotionCodeVO>  selectPromotionCodeList(PromotionCodeSearchVO search);
+
+	public Integer selectPromotionCodeListCount(PromotionCodeSearchVO search);
 }

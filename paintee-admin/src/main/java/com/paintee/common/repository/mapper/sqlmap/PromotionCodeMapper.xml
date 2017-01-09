@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.paintee.common.repository.mapper.PurchaseMapper" >
-  <resultMap id="BaseResultMap" type="com.paintee.common.repository.entity.Purchase" >
+<mapper namespace="com.paintee.common.repository.mapper.PromotionCodeMapper" >
+  <resultMap id="BaseResultMap" type="com.paintee.common.repository.entity.PromotionCode" >
     <id column="seq" property="seq" jdbcType="INTEGER" />
     <result column="code_value" property="codeValue" jdbcType="CHAR" />
     <result column="use_yn" property="useYn" jdbcType="VARCHAR" />
@@ -78,7 +78,7 @@
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from TB_PURCHASE
+    from TB_PROMOTIONCODE
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -109,7 +109,7 @@
     insert into TB_PROMOTIONCODE (
         code_value, use_yn, used_user, used_email, issue_date, used_date
       )
-    values (#{codeValue,jdbcType=CHAR}, #{useYn,jdbcType=CHAR}, #{usedUser,jdbcType=VARCHAR},
+    values (#{codeValue,jdbcType=CHAR}, #{useYn,jdbcType=VARCHAR}, #{usedUser,jdbcType=VARCHAR},
       #{usedEmail,jdbcType=VARCHAR}, #{issueDate,jdbcType=TIMESTAMP}, #{usedDate,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -143,7 +143,7 @@
         #{codeValue,jdbcType=CHAR},
       </if>
       <if test="useYn != null" >
-        #{useYn,jdbcType=CHAR},
+        #{useYn,jdbcType=VARCHAR},
       </if>
       <if test="usedUser != null" >
         #{usedUser,jdbcType=VARCHAR},
@@ -175,7 +175,7 @@
         code_value = #{record.codeValue,jdbcType=CHAR},
       </if>
       <if test="record.useYn != null" >
-        use_yn = #{record.useYn,jdbcType=CHAR},
+        use_yn = #{record.useYn,jdbcType=VARCHAR},
       </if>
       <if test="record.usedUser != null" >
         used_user = #{record.usedUser,jdbcType=VARCHAR},
@@ -198,7 +198,7 @@
     update TB_PROMOTIONCODE
     set seq = #{record.seq,jdbcType=INTEGER},
       code_value = #{record.codeValue,jdbcType=CHAR},
-      use_yn = #{record.useYn,jdbcType=CHAR},
+      use_yn = #{record.useYn,jdbcType=VARCHAR},
       used_user = #{record.usedUser,jdbcType=VARCHAR},
       used_email = #{record.usedEmail,jdbcType=VARCHAR},
       issue_date = #{record.issueDate,jdbcType=TIMESTAMP},
@@ -214,7 +214,7 @@
           code_value = #{codeValue,jdbcType=CHAR},
       </if>
       <if test="useYn != null" >
-          use_yn = #{useYn,jdbcType=CHAR},
+          use_yn = #{useYn,jdbcType=VARCHAR},
       </if>
       <if test="usedUser != null" >
           used_user = #{usedUser,jdbcType=VARCHAR},
@@ -234,7 +234,7 @@
   <update id="updateByPrimaryKey" parameterType="com.paintee.common.repository.entity.PromotionCode" >
     update TB_PROMOTIONCODE
     set code_value = #{codeValue,jdbcType=CHAR},
-    use_yn = #{useYn,jdbcType=CHAR},
+    use_yn = #{useYn,jdbcType=VARCHAR},
     used_user = #{usedUser,jdbcType=VARCHAR},
     used_email = #{usedEmail,jdbcType=VARCHAR},
     issue_date = #{issueDate,jdbcType=TIMESTAMP},

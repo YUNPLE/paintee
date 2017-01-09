@@ -104,76 +104,7 @@ public class PromotionCodeExample {
             }
             criteria.add(new Criterion(condition, value1, value2));
         }
-
-//        public Criteria andCodeValueIsNull() {
-//            addCriterion("code_value is null");
-//            return (Criteria) this;
-//        }
-//
-//        public Criteria andCodeValueIsNotNull() {
-//            addCriterion("code_value is not null");
-//            return (Criteria) this;
-//        }
-//
-//        public Criteria andCodeValueEqualTo(String value) {
-//            addCriterion("code_value =", value, "codeValue");
-//            return (Criteria) this;
-//        }
-//
-//        public Criteria andCodeValueNotEqualTo(String value) {
-//            addCriterion("code_value <>", value, "codeValue");
-//            return (Criteria) this;
-//        }
-//
-//        public Criteria andCodeValueGreaterThan(String value) {
-//            addCriterion("code_value >", value, "codeValue");
-//            return (Criteria) this;
-//        }
-//
-//        public Criteria andCodeValueGreaterThanOrEqualTo(String value) {
-//            addCriterion("code_value >=", value, "codeValue");
-//            return (Criteria) this;
-//        }
-//
-//        public Criteria andCodeValueLessThan(String value) {
-//            addCriterion("code_value <", value, "codeValue");
-//            return (Criteria) this;
-//        }
-//
-//        public Criteria andCodeValueLessThanOrEqualTo(String value) {
-//            addCriterion("code_value <=", value, "codeValue");
-//            return (Criteria) this;
-//        }
-//
-//        public Criteria andCodeValueLike(String value) {
-//            addCriterion("code_value like", value, "codeValue");
-//            return (Criteria) this;
-//        }
-//
-//        public Criteria andCodeValueNotLike(String value) {
-//            addCriterion("code_value not like", value, "codeValue");
-//            return (Criteria) this;
-//        }
-//
-//        public Criteria andCodeValueIn(List<String> values) {
-//            addCriterion("code_value in", values, "codeValue");
-//            return (Criteria) this;
-//        }
-//
-//        public Criteria andCodeValueNotIn(List<String> values) {
-//            addCriterion("code_value not in", values, "codeValue");
-//            return (Criteria) this;
-//        }
-//
-//        public Criteria andCodeValueBetween(String value1, String value2) {
-//            addCriterion("code_value between", value1, value2, "codeValue");
-//            return (Criteria) this;
-//        }
-//
-//        public Criteria andCodeValueNotBetween(String value1, String value2) {
-//            addCriterion("code_value not between", value1, value2, "codeValue");
-//            return (Criteria) this;
-//        }
+        
 
         public Criteria andCodeValueIsNull() {
             addCriterion("code_value is null");

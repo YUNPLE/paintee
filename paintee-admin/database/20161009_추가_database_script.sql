@@ -6,7 +6,7 @@ create table TB_PAINTING_LIKE (
    primary key (user_id, painting_id)
 ) COMMENT = '그림 좋아요';
 
-ALTER TABLE tb_user ADD like_cnt int DEFAULT 0 COMMENT '회원들에 의해서 좋아요된 전체 숫자' AFTER post_cnt;
+ALTER TABLE TB_USER ADD like_cnt int DEFAULT 0 COMMENT '회원들에 의해서 좋아요된 전체 숫자' AFTER post_cnt;
 
 -- 코멘트 관련 스크립트
 create table TB_COMMENT_PAINTING (
@@ -17,7 +17,7 @@ create table TB_COMMENT_PAINTING (
     created_date datetime default now() comment '등록일시'
 ) COMMENT = '사용자가 코멘트한 페인팅';
 
-ALTER TABLE tb_painting ADD comment_cnt INT DEFAULT '0' COMMENT 'Comment 한 전체 숫자' AFTER posted_num;
+ALTER TABLE TB_PAINTING ADD comment_cnt INT DEFAULT '0' COMMENT 'Comment 한 전체 숫자' AFTER posted_num;
 
 CREATE TABLE TB_TUESDAY_PAINTING (
    seq INT not null AUTO_INCREMENT COMMENT '화요의그림 고유번호',
@@ -31,5 +31,5 @@ CREATE TABLE TB_TUESDAY_PAINTING (
    primary key (seq)
 ) COMMENT = '화요의 그림';
 
-ALTER TABLE tb_purchase ADD purchase_type VARCHAR(20) DEFAULT 'CASH' COMMENT '구매 방법(CASH|TUSEDAY|COUPON)' AFTER purchase_date;
-ALTER TABLE tb_purchase ADD tuesday_seq INT COMMENT '화요의그림 고유번호' AFTER purchase_type;
+ALTER TABLE TB_PURCHASE ADD purchase_type VARCHAR(20) DEFAULT 'CASH' COMMENT '구매 방법(CASH|TUSEDAY|COUPON)' AFTER purchase_date;
+ALTER TABLE TB_PURCHASE ADD tuesday_seq INT COMMENT '화요의그림 고유번호' AFTER purchase_type;

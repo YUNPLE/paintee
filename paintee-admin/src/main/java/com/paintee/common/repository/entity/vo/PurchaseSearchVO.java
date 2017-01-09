@@ -41,6 +41,7 @@ public class PurchaseSearchVO extends Purchase {
 	private Integer serviceCnt;
 	private Integer startRow;
 	private Integer rowPerPage;
+	private Float usedRewardMoney;
 	
 	public List<String> getStatusList() {
 		return statusList;
@@ -71,5 +72,11 @@ public class PurchaseSearchVO extends Purchase {
 	}
 	public void setRowPerPage(Integer rowPerPage) {
 		this.rowPerPage = rowPerPage;
+	}
+	public Float getUsedRewardMoney(){
+		return usedRewardMoney;
+	}
+	public void setUsedRewardMoney(Float usedRewardMoney){
+		this.usedRewardMoney = usedRewardMoney;
 	}
 }

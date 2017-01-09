@@ -135,6 +135,9 @@ public class LoginServiceImpl implements LoginService {
 				resultMap.put("location", userInfo.getLocation());
 				resultMap.put("language", userInfo.getLanguage());
 				resultMap.put("providerId", userInfo.getProviderId());
+				resultMap.put("earnedTotalMoney", userInfo.getEarnTotalMoney());
+				resultMap.put("earnedRewardMoney",userInfo.getEarnRewordMoney());
+				resultMap.put("usedRewardMoney",userInfo.getUsedRewardMoney());
 				resultMap.put("hash", login.getHash());
 			}			
 		}

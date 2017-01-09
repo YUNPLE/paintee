@@ -22,6 +22,7 @@
 				<li><a href="${pageContext.request.contextPath}/admin/painting/list">Upload</a></li>
 				<li><a href="${pageContext.request.contextPath}/admin/purchase/list">Purchase</a></li>
 				<li><a href="${pageContext.request.contextPath}/admin/reward/list">Reward</a></li>
+				<li><a href="${pageContext.request.contextPath}/admin/promotioncode/list">Promotion Code</a></li>
 			</ul>
 			</c:if>
 		    <ul class="nav navbar-nav navbar-right">

@@ -4,12 +4,24 @@ import com.paintee.common.object.BaseEntity;
 import java.util.Date;
 
 public class PromotionCode extends BaseEntity {
+	private Integer seq;
+	
     private String usedUser;
     private String codeValue;
     private Date issueDate;
     private Date usedDate;
     private String usedEmail;
     private String useYn;
+    
+    public Integer getSeq() {
+        return seq;
+    }
+
+    public void setSeq(Integer seq) {
+        this.seq = seq;
+    }
+    
+    
     
     public String getCodeValue(){
         return codeValue;
@@ -20,13 +32,13 @@ public class PromotionCode extends BaseEntity {
     public Date getUsedDate(){
         return usedDate;
     }
-    private String getUsedUser(){
+    public String getUsedUser(){
         return usedUser;
     }
-    private String getUsedEmail(){
+    public String getUsedEmail(){
         return usedEmail;
     }
-    private String getUseYn(){
+    public String getUseYn(){
         return useYn;
     }
     

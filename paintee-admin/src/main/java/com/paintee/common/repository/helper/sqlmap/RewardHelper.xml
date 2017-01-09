@@ -17,13 +17,14 @@
   	<select id="selectRewardInfo" resultMap="BaseResultMap" parameterType="com.paintee.common.repository.entity.User">
 	    SELECT a.earn_total_money,
 			   a.earn_reword_money,
-			   a.earn_total_money - a.earn_reword_money AS remain_money,
+			   a.used_reward_money,
+			   a.earn_total_money - a.earn_reword_money - a.used_reward_money AS remain_money,
 			   (SELECT sum(posted_num)
 			      FROM TB_PAINTING
 			     WHERE artist_id = #{userId}) as sell_count,
 			   (SELECT count(*) 
 			      FROM TB_REWARD
-			     WHERE reward_status = 'R'
+			     WHERE reward_status = 'R' OR reward_type = 'P'
 			       AND user_id = #{userId}) as request_count
 		  FROM TB_USER a 
 		 where a.user_id = #{userId}

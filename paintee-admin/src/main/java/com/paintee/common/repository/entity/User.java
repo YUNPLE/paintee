@@ -37,6 +37,8 @@ public class User extends BaseEntity {
     private Float earnTotalMoney;
 
     private Float earnRewordMoney;
+    
+    private Float usedRewardMoney;
 
     private String resentSendBasicAddr;
 
@@ -196,6 +198,13 @@ public class User extends BaseEntity {
         this.earnRewordMoney = earnRewordMoney;
     }
 
+    public void setUsedRewardMoney(Float usedRewardMoney){
+    	this.usedRewardMoney= usedRewardMoney;
+    }
+    
+    public Float getUsedRewardMoney(){
+    	return usedRewardMoney;
+    }
     public String getResentSendBasicAddr() {
         return resentSendBasicAddr;
     }

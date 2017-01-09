@@ -23,6 +23,12 @@ public class Reward extends BaseEntity {
     private String rewardStatus;
 
     private Date createdDate;
+    
+    private String rewardType;
+    
+    private Integer purchaseSeq;
+    
+    private String purchasePaint;
 
     public Integer getSeq() {
         return seq;
@@ -102,5 +108,29 @@ public class Reward extends BaseEntity {
 
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+    }
+
+    public String getRewardType() {
+    	return rewardType;
+    }
+    
+    public void setRewardType(String rewardType){
+    	this.rewardType = rewardType;
+    }
+    
+    public Integer getPurchaseSeq() {
+    	return purchaseSeq;
+    }
+    
+    public void setPurchaseSeq(Integer purchaseSeq){
+    	this.purchaseSeq = purchaseSeq;
+    }
+    
+    public String getPurchasePaint() {
+    	return purchasePaint;
+    }
+    
+    public void setPurchsePaint(String purchasePaint){
+    	this.purchasePaint = purchasePaint;
     }
 }
